@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getImg () {
+            return new Promise((res, rej) => {
+                const oImg = new Image();
+
+                oImg.onload = function () {
+                    res(oImg)
+                }
+                oImg.src = "https://image.shutterstock.com/z/stock-photo-shark-tooth-beach-k-k-1287671416.jpg"
+            })
+        }
+
+        function timeout () {
+            return new Promise((res, rej) => {
+                setTimeout(() => {
+                    rej('image loading time out')
+                }, 500)
+            })
+        }
+
+        Promise.race([getImg(), timeout()])
+            .then(res => { console.log(res) })
+            .catch(err => console.log(err))
+    </script>
+</body>
+
+</html>

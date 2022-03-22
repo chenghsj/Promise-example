@@ -1,0 +1,7 @@
+{
+  "userName": "Nana",
+  "courses": [
+    { "id": 2, "name": "Javascript" },
+    { "id": 3, "name": "React" }
+  ]
+}
